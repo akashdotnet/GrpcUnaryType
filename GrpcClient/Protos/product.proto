@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcUnaryService";
+
+package product;
+
+// The sample service definition.
+service Product {
+  // Sends a sample
+  rpc SaveProduct (ProductRequestModel) returns (ProductResponseModel);
+  rpc GetProducts (google.protobuf.Empty) returns (ProductList);
+}
+
+message ProductList{
+	repeated ProductRequestModel Products =1 ;
+}
+ 
+// The request message containing the user's name.
+message ProductRequestModel {
+  string productName = 1;
+  string productCode  = 2;
+  double price=3;
+  google.protobuf.Timestamp StockDate=4;
+}
+
+
+
+// The response message containing the samples.
+message ProductResponseModel {
+  bool isSuccess=1;
+  int32 statucCode=2;
+}

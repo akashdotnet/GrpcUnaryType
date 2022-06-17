@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcUnaryService";
+
+package sample;
+
+// The sample service definition.
+service Sample {
+  // Sends a sample
+  rpc GetFullName (SampleRequest) returns (SampleResponse);
+}
+
+// The request message containing the user's name.
+message SampleRequest {
+  string firstName = 1;
+  string lastName  = 2;
+}
+
+// The response message containing the samples.
+message SampleResponse {
+  string fullName = 1;
+}
